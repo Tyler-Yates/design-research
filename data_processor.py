@@ -2,10 +2,10 @@ import collections
 from datetime import datetime
 
 
-def main():
+def process_discharge_data():
     processed_data = collections.OrderedDict()
 
-    with open('data/DischargeCypressCreek.csv') as data_file:
+    with open('data/original/DischargeCypressCreek.csv') as data_file:
         for line in data_file:
             line = line.strip()
             if len(line) == 0:
@@ -27,4 +27,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    process_discharge_data()
