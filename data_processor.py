@@ -2,6 +2,28 @@ import collections
 from datetime import datetime
 
 
+def process_precipitation_data():
+    with open('data/original/DailyPrecip.csv') as data_file:
+        for line in data_file:
+            line = line.strip()
+            if len(line) == 0:
+                continue
+
+            split_line = line.split(',')
+            if len(split_line) <= 1 or split_line[0] == 'Da0e':
+                continue
+
+            date = split_line[0]
+
+            precipitation = 0.0
+            try:
+                precipitation = float(split_line[1])
+            except Exception:
+                pass
+
+            print("{},{}".format(date, precipitation))
+
+
 def process_discharge_data():
     processed_data = collections.OrderedDict()
 
@@ -27,4 +49,4 @@ def process_discharge_data():
 
 
 if __name__ == '__main__':
-    process_discharge_data()
+    process_precipitation_data()
